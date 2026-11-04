@@ -142,7 +142,8 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.65);
   z-index: 1050;
-  animation: fadeIn 0.25s ease-out;
+  animation: fadeIn 0.2s ease-out;
+  touch-action: none;
 }
 
 @keyframes fadeIn {
@@ -156,20 +157,28 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: min(300px, 85vw);
+  height: 100vh;
+  height: 100dvh;
+  width: min(300px, 82vw);
+  max-width: 100vw;
   background-color: #020072;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.45);
   z-index: 1100;
-  padding: 1.5rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .drawerOpen {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .drawerHeader {
@@ -218,11 +227,19 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileNavItem {
+  width: 100%;
 }
 
 .mobileNavLink {
   display: flex;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
   padding: 0.85rem 1rem;
   min-height: 44px;
   font-size: 1.05rem;
@@ -231,6 +248,7 @@
   border-radius: var(--radius-md);
   transition: var(--transition);
   outline: none;
+  cursor: pointer;
 }
 
 .mobileNavLink:hover {
@@ -261,6 +279,6 @@
 
   .mobileDrawer,
   .backdrop {
-    display: none;
+    display: none !important;
   }
 }

@@ -20,10 +20,16 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fechar menu mobile com tecla ESC e travar scroll do fundo quando aberto
+  // Fechar menu mobile com tecla ESC, ao redimensionar e travar scroll do fundo
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && abrirMenu) {
+        setAbrirMenu(false);
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth >= 900 && abrirMenu) {
         setAbrirMenu(false);
       }
     };
@@ -35,9 +41,12 @@ function Header() {
       document.body.style.overflow = "";
     }
 
+    window.addEventListener("resize", handleResize);
+
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
     };
   }, [abrirMenu]);
 
@@ -75,7 +84,6 @@ function Header() {
         return;
       }
 
-      // Observer para seções na página inicial
       const observerCallback = (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -101,7 +109,7 @@ function Header() {
     }
   }, [location]);
 
-  // Tratar clique em itens que usam âncora
+  // Tratar clique em âncoras e fechar menu imediatamente
   const handleAnchorClick = (e, targetHash, itemId) => {
     setActiveItem(itemId);
     setAbrirMenu(false);
@@ -191,9 +199,16 @@ function Header() {
         </button>
       </div>
 
-      {/* Backdrop e Gaveta Mobile */}
-      {abrirMenu && <div className={styles.backdrop} onClick={() => setAbrirMenu(false)} aria-hidden="true" />}
+      {/* Backdrop Mobile com toque suave */}
+      {abrirMenu && (
+        <div
+          className={styles.backdrop}
+          onClick={() => setAbrirMenu(false)}
+          aria-hidden="true"
+        />
+      )}
 
+      {/* Gaveta Lateral Mobile */}
       <div
         className={`${styles.mobileDrawer} ${abrirMenu ? styles.drawerOpen : ""}`}
         role="dialog"
