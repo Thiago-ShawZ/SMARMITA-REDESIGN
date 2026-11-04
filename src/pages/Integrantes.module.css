@@ -1,55 +1,247 @@
-.integrantes_mobile{
-    margin: 4rem;
+.pageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
 }
 
-.Integrantes h1{
-    color: #020072;
-    text-align: center;
-    font-size: 48px;
-    margin: 3.5625rem;
+.mainContent {
+  width: 100%;
 }
 
-.integrantes_cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* =========================================
+   HERO / CABEÇALHO
+   ========================================= */
+.heroSection {
+  background: linear-gradient(135deg, #020072 0%, #0d1257 60%, #151d6c 100%);
+  color: #ffffff;
+  padding: 4.5rem 1.5rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(2, 0, 114, 0) 70%);
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.badgeHero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffd8bf;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.titleHero {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitleHero {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   EQUIPE / CARDS
+   ========================================= */
+.teamSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.sectionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--color-tech-soft);
+  color: var(--color-tech-cyan);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.integrantesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  justify-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: #cbd5e1;
+}
+
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.25rem;
+  background-color: var(--color-surface-muted);
 }
 
 .imagem {
-    height: 321px;
-    width: 307px;
-    display: flex;
-    justify-content: center;
-    border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.card{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+.card:hover .imagem {
+  transform: scale(1.04);
+}
 
-    padding: 2rem;
-
-    background-color: #dcdcdc;
-    border-radius: 30px;
-    margin-bottom: 3rem;
-    margin-inline: 1rem;
-
-
+.cardInfo {
+  margin-bottom: 1.25rem;
 }
 
 .name {
-    font-size: 2rem;
-    text-align: center;
-    font-weight: 700;
-    color: #020072;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
 
+.role {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .icons {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: auto;
+}
 
-    gap: 3rem;
+.iconButton {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-muted);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+
+.iconButton:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.iconDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================
+   RESPONSIVIDADE (TABLET E DESKTOP)
+   ========================================= */
+@media (min-width: 640px) {
+  .integrantesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .integrantesGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
 }

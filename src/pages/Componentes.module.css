@@ -1,60 +1,795 @@
-.conteinerComponents:nth-child(even){
-    background-color: #020072;
+.pageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
 }
-.titleBlue{
-    color: #020072;
+
+.mainContent {
+  width: 100%;
+}
+
+/* =========================================
+   HERO / CABEÇALHO DA PÁGINA
+   ========================================= */
+.heroSection {
+  background: linear-gradient(135deg, #020072 0%, #0d1257 60%, #151d6c 100%);
+  color: #ffffff;
+  padding: 4.5rem 1.25rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(2, 0, 114, 0) 70%);
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.badgeHero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffd8bf;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.titleHero {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitleHero {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   DIAGRAMA INTERATIVO
+   ========================================= */
+.diagramSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 5rem 1.25rem 4rem;
+}
+
+.diagramHeader {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 3rem;
+}
+
+.sectionTag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--color-tech-soft);
+  color: var(--color-tech-cyan);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.diagramInstruction {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.diagramContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Trilho do Fluxo Funcional */
+.flowTrack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 2rem 1.25rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.flowNodeWrapper {
+  width: 100%;
+  max-width: 280px;
+}
+
+/* Botão / Nó do Diagrama */
+.diagramNode {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: #ffffff;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: var(--transition);
+  position: relative;
+  outline: none;
+}
+
+.diagramNode:hover {
+  transform: translateY(-2px);
+  border-color: #94a3b8;
+  box-shadow: var(--shadow-md);
+}
+
+.diagramNode:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Nó Central (Arduino) */
+.nodeCentral {
+  border-color: #cbd5e1;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Nó Selecionado / Ativo */
+.nodeActive {
+  border-color: var(--color-accent) !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), var(--shadow-lg) !important;
+  transform: translateY(-3px) !important;
+}
+
+.nodeIconWrapper {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--color-tech-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.nodeActive .nodeIconWrapper {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.nodeInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.nodeStep {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+}
+
+.nodeStepCentral {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+
+.nodeActive .nodeStep,
+.nodeActive .nodeStepCentral {
+  color: var(--color-accent);
+}
+
+.nodeName {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+.nodeAction {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Conectores do Fluxo */
+.flowConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.connectorLine {
+  display: none;
+}
+
+.connectorBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.arrowDesktop {
+  display: none;
+}
+
+.arrowMobile {
+  display: inline-block;
+}
+
+/* Ramificação (LCD e Relé) */
+.branchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.branchItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.flowConnectorSmall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connectorBadgeSmall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* =========================================
+   PAINEL DE DETALHES DO COMPONENTE
+   ========================================= */
+.detailsCard {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+.detailsCard:focus-visible {
+  outline: 2px solid var(--color-accent);
+}
+
+.detailsHeader {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detailsTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.detailsTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.detailsFluxo {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.detailsFluxo strong {
+  color: var(--color-primary);
+}
+
+.detailsBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.detailsImageContainer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-surface-muted);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.detailsImage {
+  max-height: 280px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.detailsImage:hover {
+  transform: scale(1.04);
+}
+
+.detailsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.detailsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blockTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.blockIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.blockText {
+  font-size: 1.05rem;
+  color: var(--color-text-main);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Seletor Rápido de Componentes */
+.quickNav {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quickNavLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quickNavButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.quickBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  min-height: 42px;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: var(--transition);
+  outline: none;
+}
+
+.quickBtn:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.quickBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.quickBtnActive {
+  background: var(--color-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.35);
+}
+
+/* =========================================
+   SEÇÃO DE PILHAS (ENERGIA AUTÔNOMA)
+   ========================================= */
+.pilhasSection {
+  background: linear-gradient(135deg, #020072 0%, #0d1257 100%);
+  color: #ffffff;
+  padding: 5rem 1.25rem 6rem;
+}
+
+.pilhasContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pilhasImageWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pilhasImage {
+  max-height: 320px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.pilhasImage:hover {
+  transform: scale(1.03);
+}
+
+.pilhasContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pilhasBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffd8bf;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+}
+
+.pilhasTitle {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: #ffffff;
+  margin: 0;
+}
+
+.pilhasBlock h3 {
+  font-size: 1.25rem;
+  color: #ffd8bf;
+  margin-bottom: 0.5rem;
+}
+
+.pilhasBlock p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* =========================================
+   CATÁLOGO COMPLETO DE COMPONENTES
+   ========================================= */
+.catalogSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 5rem 1.25rem 6rem;
+}
+
+.catalogHeader {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 3rem;
+}
+
+.catalogSubtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.catalogGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.catalogCard {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: var(--transition);
+}
+
+.catalogCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #cbd5e1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cardIconWrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-tech-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardCategory {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.cardImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  height: 220px;
+}
+
+.cardImage {
+  max-height: 180px;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.catalogCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-grow: 1;
+}
+
+.cardSectionTitle {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cardSelectBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  min-height: 44px;
+  background-color: var(--color-surface-muted);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: auto;
+  transition: var(--transition);
+  outline: none;
+}
+
+.cardSelectBtn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
+.cardSelectBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE, TABLET E DESKTOP)
+   ========================================= */
+@media (max-width: 600px) {
+  .detailsCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .detailsImageContainer {
+    padding: 1.25rem;
+  }
+
+  .detailsImage {
+    max-height: 220px;
+  }
+
+  .flowTrack {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .catalogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detailsBody {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flowTrack {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 2rem;
+  }
+
+  .flowNodeWrapper {
+    width: auto;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .diagramNode {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-size: 48px;
-    margin: 2rem;
-}
+    padding: 1.5rem 1rem;
+  }
 
-.titleWhite{
-    color: #fff;
-    text-align: center;
-    font-size: 48px;
-    padding: 2rem;
-}
+  .nodeInfo {
+    align-items: center;
+  }
 
-.imgComponents{
-    display: flex;
-    justify-content: center;
-}
+  .flowConnector {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
 
-.imgComponents img{
-    height: 320px;
-}
+  .connectorLine {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background-color: var(--color-border);
+  }
 
+  .arrowDesktop {
+    display: inline-block;
+  }
 
+  .arrowMobile {
+    display: none;
+  }
 
-.textBlue h3{
-    color: #020072;
-    font-size: 32px;
-    text-align: center;
-}
+  .branchContainer {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 220px;
+    flex: 1;
+  }
 
-.textBlue p{
-    color: #000000;
-    margin: 3rem;
-}
+  .branchItem {
+    width: 100%;
+  }
 
-.textWhite h3{
-    color: #fff;
-    font-size: 32px;
-    text-align: center;
-}
+  .catalogGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-.textWhite p{
-    color: #fff;
-    padding: 3rem;
-
-}
-
-@media (min-width: 800px){
-    .textWhite p{
-        margin-inline: 7rem;
-    }
-
-    .textBlue p{
-        margin-inline: 7rem;
-    }
+  .pilhasContainer {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+  }
 }

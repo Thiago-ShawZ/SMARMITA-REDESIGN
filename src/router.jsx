@@ -12,7 +12,7 @@ function Router() {
             <Route path="/" element={<Home />} />
             <Route path="/Conteudo" element={<Conteudo />} />
             <Route path="/Integrantes" element={<Integrantes />} />
-            <Route path= "Componentes" element={<Componentes/>} />
+            <Route path="/Componentes" element={<Componentes />} />
         </Routes>
     )
 }

@@ -1,81 +1,249 @@
-.project_history{
-    margin-inline: 4rem;
+.conteudoWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
 }
 
-.project_history h1{
-    color: #020072;
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 2rem;
+.mainContent {
+  width: 100%;
 }
 
-.image_history  {
-    display: flex;
-    justify-content: center;
+/* =========================================
+   HERO / CABEÇALHO
+   ========================================= */
+.heroSection {
+  background: linear-gradient(135deg, #020072 0%, #0d1257 60%, #151d6c 100%);
+  color: #ffffff;
+  padding: 4.5rem 1.5rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.components{
-    background-color: #020072;
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(2, 0, 114, 0) 70%);
+  pointer-events: none;
 }
 
-.title_Components{
-    padding: 2rem;
+.heroContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.title_Components h1{
-    color: #fff;
-    text-align: center;
-    font-size: 48px;
+.badgeHero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffd8bf;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(8px);
 }
 
-.components_arduino button{
-    width: 9.875rem;
-    height: 2.25rem;
+.titleHero {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
-.components_slider{
-    padding-bottom: 9.5rem;
+.subtitleHero {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-.code h1{
-    color: #020072;
-    text-align: center;
-    font-size: 48px;
-    margin-top: 2rem; 
-}
-.git{
-    display: flex;
-    justify-content: center;
+/* =========================================
+   HISTÓRIA DO PROJETO
+   ========================================= */
+.project_history {
+  padding: 5rem 1.5rem;
+  background-color: #ffffff;
 }
 
-.Git_button{
-    margin: 5rem;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    background-color: #020072;
-    width: 200px;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.Git_button a::after{
-    color: #fff
+.image_history {
+  display: flex;
+  justify-content: center;
 }
 
+.imageFrame {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  max-width: 440px;
+  width: 100%;
+}
 
-@media (min-width: 800px){
-    .project_history{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5rem;
+.imageFrame img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
 
-    }
+.imageFrame:hover img {
+  transform: scale(1.02);
+}
 
-    .image_history img{
-        height: 28.75rem;
-        width: 29.375rem;
-        margin-right: 16.75rem;
-    }
-  
+.text_history {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.text_history h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.historyParagraphs p {
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.quoteBox {
+  border-left: 4px solid var(--color-accent);
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-bg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 1.5rem 0 0;
+  font-style: italic;
+}
+
+.quoteBox p {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.quoteBox p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   CÓDIGO DO ARDUINO
+   ========================================= */
+.code {
+  background: linear-gradient(135deg, #020072 0%, #0d1257 100%);
+  color: #ffffff;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.codeContainer {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.codeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffd8bf;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.code h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: #ffffff;
+  margin: 0;
+}
+
+.codeDescription {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+}
+
+.git {
+  margin-top: 1rem;
+}
+
+.gitButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.8rem;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4);
+  transition: var(--transition);
+}
+
+.gitButton:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(249, 115, 22, 0.55);
+}
+
+.gitButton:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
 }
