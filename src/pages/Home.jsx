@@ -84,6 +84,14 @@ function Home() {
                 >
                   Ver funcionamento
                 </a>
+
+                <Link
+                  to="/landing"
+                  className={styles.secondaryButton}
+                  style={{ borderColor: "var(--color-accent)", color: "var(--color-accent)" }}
+                >
+                  Página Comercial &rarr;
+                </Link>
               </div>
 
               <div className={styles.heroHighlights}>
